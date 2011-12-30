@@ -26,9 +26,84 @@
 (setq backup-directory-alist '((".*" . "~/.emacs/backups")))
 (setq auto-save-file-name-transforms '((".*" "~/.emacs/autosaves/\\1" t)))
 
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+
+; derived from ELPA installation
+; http://tromey.com/elpa/install.html
+(defun eval-url (url)
+  (let ((buffer (url-retrieve-synchronously url)))
+  (save-excursion
+    (set-buffer buffer)
+    (goto-char (point-min))
+    (re-search-forward "^$" nil 'move)
+    (eval-region (point) (point-max))
+    (kill-buffer (current-buffer)))))
+
+;; Load ELPA
+(add-to-list 'load-path "~/.emacs.d/elpa")
+
+(defun install-elpa ()
+  (eval-url "http://tromey.com/elpa/package-install.el"))
+
+(if (require 'package nil t)
+    (progn
+      ;; Emacs 24+ includes ELPA, but requires some extra setup
+      ;; to use the (better) tromey repo
+      (if (>= emacs-major-version 24)
+          (setq package-archives
+                (cons '("tromey" . "http://tromey.com/elpa/")
+                package-archives)))
+      (package-initialize))
+  (install-elpa))
+
+;; Load el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(defun install-el-get ()
+  (eval-url
+   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"))
+
+(unless (require 'el-get nil t)
+  (install-el-get))
+
+;; extra recipes for packages unknown to el-get (yet)
+(setq el-get-sources
+      '((:name css-mode :type elpa)
+        (:name js2-mode-mooz
+               :type git
+               :url "git://github.com/mooz/js2-mode.git"
+               :load "js2-mode.el"
+               :compile ("js2-mode.el")
+               :features js2-mode)))
+
+;; list all packages you want installed
+(setq my-el-get-packages
+      (append
+       '(evil color-theme js2-mode-mooz python-mode
+              haskell-mode haml-mode clojure-mode
+              coffee-mode undo-tree)
+       (mapcar 'el-get-source-name el-get-sources)))
+
+(el-get 'sync my-el-get-packages)
+
+(require 'coffee-mode)
+(require 'python-mode)
+
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
 ;; Evil
-(add-to-list 'load-path "~/.emacs.d/evil")
-(add-to-list 'load-path "~/.emacs.d/undo-tree")
 (setq evil-move-cursor-back nil)
 (setq evil-default-cursor t)
 
@@ -49,25 +124,12 @@
 
 ;; Colors
 (add-to-list 'load-path "~/.emacs.d/colors")
-(add-to-list 'load-path "~/.emacs.d/color-theme")
 
 (require 'color-theme)
 ;(require 'color-theme-gruber-darker)
 ;(color-theme-gruber-darker)
 (require 'color-theme-molokai)
 (color-theme-molokai)
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
 
 
 ;;; This was installed by package-install.el.
