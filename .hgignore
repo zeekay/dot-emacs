@@ -1,0 +1,4 @@
+syntax: glob
+backups/
+autosaves/
+.git/
