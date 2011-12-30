@@ -14,6 +14,12 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq ring-bell-function 'ignore)
 
+;; key bindings
+(when (eq system-type 'darwin) ;; mac specific settings
+  ;; (setq mac-command-key-is-meta t)
+  ;; (setq mac-command-modifier 'meta)
+  (global-set-key [kp-delete] 'delete-char)) ;; sets fn-delete to be right-delete
+
 ;; Autosave/Backups
 (setq make-backup-files t)
 (setq version-control t)
