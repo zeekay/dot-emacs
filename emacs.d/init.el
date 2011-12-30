@@ -12,10 +12,7 @@
 (setq visible-cursor nil)
 (setq cursor-in-non-selected-windows nil)
 (fset 'yes-or-no-p 'y-or-n-p)
-
-;; Disable bell
-(defun disable-bell ())
-(setq ring-bell-function 'disable-bell)
+(setq ring-bell-function 'ignore)
 
 ;; Autosave/Backups
 (setq make-backup-files t)
