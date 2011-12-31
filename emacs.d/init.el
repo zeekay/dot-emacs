@@ -121,4 +121,5 @@
 (require 'color-theme-molokai)
 (color-theme-molokai)
 
-
+;; Python
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
