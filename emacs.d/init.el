@@ -3,12 +3,12 @@
 (setq vc-follow-symlinks t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(toggle-scroll-bar -1)
+(scroll-bar-mode -1)
 
 ;; Basic
 (setq scroll-step 1)
 (setq-default indent-tabs-mode nil)
-(set-default-font "MonteCarlo")
+(set-default-font "MonteCarlo:pixelsize=11:foundry=Bok:weight=normal:slant=normal:width=normal:spacing=100:scalable=false")
 (setq visible-cursor nil)
 (setq cursor-in-non-selected-windows nil)
 (fset 'yes-or-no-p 'y-or-n-p)
