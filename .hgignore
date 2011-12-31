@@ -4,3 +4,4 @@ autosaves/
 .git/
 el-get
 elpa
+auto-save-list
