@@ -48,14 +48,13 @@
 
 (if (require 'package nil t)
     (progn
-      ;; Emacs 24+ includes ELPA, but requires some extra setup
-      ;; to use the (better) tromey repo
-      (if (>= emacs-major-version 24)
-          (setq package-archives
-                (cons '("tromey" . "http://tromey.com/elpa/")
-                package-archives)))
-      (package-initialize))
+        (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+                                 ("marmalade" . "http://marmalade-repo.org/packages/")))
+        (package-initialize))
   (install-elpa))
+
+;; Marmalade package archive
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 ;; Load el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
