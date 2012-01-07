@@ -117,8 +117,8 @@
 (require 'color-theme)
 ;(require 'color-theme-gruber-darker)
 ;(color-theme-gruber-darker)
-(require 'color-theme-molokai)
-(color-theme-molokai)
+(require 'color-theme-almost-monokai)
+(color-theme-almost-monokai)
 
 ;; Python
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
