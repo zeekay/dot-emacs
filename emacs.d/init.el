@@ -8,7 +8,8 @@
 ;; Basic
 (setq scroll-step 1)
 (setq-default indent-tabs-mode nil)
-(set-default-font "MonteCarlo:pixelsize=11:foundry=Bok:weight=normal:slant=normal:width=normal:spacing=100:scalable=false")
+;; (set-default-font "MonteCarlo:pixelsize=11:foundry=Bok:weight=normal:slant=normal:width=normal:spacing=100:scalable=false")
+(set-default-font "Inconsolata:pixelsize=14")
 (setq visible-cursor nil)
 (setq cursor-in-non-selected-windows nil)
 (fset 'yes-or-no-p 'y-or-n-p)
