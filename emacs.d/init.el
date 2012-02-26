@@ -116,10 +116,10 @@
 (add-to-list 'load-path "~/.emacs.d/colors")
 
 (require 'color-theme)
-;(require 'color-theme-gruber-darker)
-;(color-theme-gruber-darker)
-(require 'color-theme-almost-monokai)
-(color-theme-almost-monokai)
+(require 'color-theme-gruber-darker)
+(color-theme-gruber-darker)
+;; (require 'color-theme-almost-monokai)
+;; (color-theme-almost-monokai)
 
 ;; Python
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
