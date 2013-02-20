@@ -1,0 +1,4 @@
+backup $HOME/.emacs
+backup $HOME/.emacs.d
+ln -s $module_path $HOME/.emacs
+ln -s $module_path/.emacs.d $HOME/.emacs.d
