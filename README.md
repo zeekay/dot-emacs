@@ -1,5 +1,5 @@
-# dot-emacs
-Default [emacs][emacs] dotfiles provided by [ellipsis][ellipsis] and my personal setup.
+# zeekay/dot-emacs
+My [emacs](emacs) configuration, comptaible with [ellipsis](ellipsis).
 
 ## Features
 Pretty vanilla config, all things considered.
@@ -8,7 +8,7 @@ Pretty vanilla config, all things considered.
 Clone and symlink or install with [ellipsis][ellipsis]:
 
 ```
-$ ellipsis install emacs
+$ ellipsis install zeekay/dot-emacs
 ```
 
 [ellipsis]: http://ellipsis.sh

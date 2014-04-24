@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
+#
+# zeekay/dot-emacs
+# My emacs configuration.
 
-mod.install() {
+pkg.install() {
     ellipsis.backup ~/.emacs
     ellipsis.backup ~/.emacs.d
     ln -s $mod_path ~/.emacs
