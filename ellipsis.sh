@@ -6,6 +6,6 @@
 pkg.install() {
     ellipsis.backup ~/.emacs
     ellipsis.backup ~/.emacs.d
-    ln -s $mod_path ~/.emacs
-    ln -s $mod_path/.emacs.d ~/.emacs.d
+    ln -s $PKG_PATH ~/.emacs
+    ln -s $PKG_PATH/.emacs.d ~/.emacs.d
 }
